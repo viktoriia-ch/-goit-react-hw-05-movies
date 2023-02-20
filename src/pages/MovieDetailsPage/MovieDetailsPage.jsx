@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Suspense } from 'react';
 import {
   Link,
   Outlet,
@@ -83,7 +83,9 @@ const MovieDetailsPage = () => {
           </div>
         </div>
         <div>
-          <Outlet />
+          <Suspense>
+            <Outlet />
+          </Suspense>
         </div>
       </div>
     </>
