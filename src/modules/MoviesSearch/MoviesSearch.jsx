@@ -17,6 +17,11 @@ const MoviesSearch = () => {
     const fetchMovies = async () => {
       try {
         const { results } = await getMoviesByQuery(search);
+        console.log(results);
+        if (!results.length) {
+          setMovies([]);
+          return Notify.info('Nothing found. Try another query!');
+        }
         setMovies(results);
       } catch ({ response }) {
         Notify.failure(response.data.status_message);
